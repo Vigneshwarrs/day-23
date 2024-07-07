@@ -92,7 +92,7 @@ function Cards({ obj }) {
                     <Card.Body>
                       <Card.Title>{o.title}</Card.Title>
                       <Card.Text>{o.rating}</Card.Text>
-                      <Card.Text><span style={{ textDecoration: "line-through" }}>{o.original_price}</span>{o.actual_price}</Card.Text>
+                      <Card.Text><span style={{ textDecoration: "line-through" }}>{o.original_price}</span>  {o.actual_price}</Card.Text>
                       <Button variant="primary" onClick={(e) => handleCart(e)}>Add to Card</Button>
                     </Card.Body>
                   </Card>
