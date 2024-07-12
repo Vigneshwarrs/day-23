@@ -59,4 +59,52 @@ function App() {
 
 }
 
+function Cards({ obj }) {
+  const [cart, setCart] = useState(0);
+
+
+  function handleCart(e) {
+    if (e.target.textContent.includes("Add")) {
+      setCart(cart + 1);
+      e.target.textContent = "Remove form Cart";
+    } else if (e.target.textContent.includes("Remove")) {
+      setCart(cart - 1);
+      e.target.textContent = "Add to cart";
+    }
+  }
+
+  return (
+    <div>
+        <Navbar bg="dark" data-bs-theme="dark">
+          <Container>
+            <Navbar.Brand >Mobile Market</Navbar.Brand>
+            <Navbar.Text>Carts: {cart}</Navbar.Text>
+          </Container>
+        </Navbar>
+        <Container className='px-4 px-lg-5 mt-5'>
+        <Row className='gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4'>
+          {
+            obj.map((o) => {
+              return (
+                <Col className='mb-5'>
+                  <Card>
+                    <Card.Img variant="top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" />
+                    <Card.Body>
+                      <Card.Title>{o.title}</Card.Title>
+                      <Card.Text>{o.rating}</Card.Text>
+                      <Card.Text><span style={{ textDecoration: "line-through" }}>{o.original_price}</span>  {o.actual_price}</Card.Text>
+                      <Button variant="primary" onClick={(e) => handleCart(e)}>Add to Card</Button>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              )
+            })
+          }
+        </Row>
+      </Container>
+    </div>
+  );
+}
+
+
 export default App;
